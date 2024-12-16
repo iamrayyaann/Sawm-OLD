@@ -1,1 +1,1 @@
-# As-Sawm
+# Sawm
