@@ -1,23 +1,53 @@
-{% extends "base.html" %}
-
-{% block body %}
-    <form action="/home" method="POST" class="form-horizontal">
-        <div class="form-group">
-            <label for="countryInput" class="control-label ">Country: </label>
-            <input type="text" class="form-control" id="countryInput" name="Country">
-        
-            <label for="cityInput" class="control-label">City: </label>
-            <input type="text" class="form-control" id="cityInput" name="City">
-        </div>
-        <input type="date" name="date" >
-        
-        <select class="form-select" name='method'>
-            <option selected>Select calculation method</option>
-            {% for index, method in methods %}
-                {% if method %}
-                    <option value="{{index}}">{{method}}</option>
-                {% endif %}
-            {% endfor %}
-          </select>
-    </form>
+{% extends "base.html" %} {% block body %}
+<div class="container my-4  ">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="form-container">
+        <form action="/home" method="POST" class="form-horizontal">
+          <div class="mb-3">
+            <label for="countryInput" class="form-label">Country:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="countryInput"
+              name="Country"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="cityInput" class="form-label">City:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cityInput"
+              name="City"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="dateInput" class="form-label">Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateInput"
+              name="date"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="methodSelect" class="form-label"
+              >Calculation Method:</label
+            >
+            <select class="form-select" id="methodSelect" name="method">
+              <option selected>Select calculation method</option>
+              {% for index, method in methods %} {% if method %}
+              <option value="{{index}}">{{method}}</option>
+              {% endif %} {% endfor %}
+            </select>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock body %}
