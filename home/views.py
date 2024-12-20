@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponse
 # Create your views here.
 
 def home(request):
+    
     prayer_calculation_methods = [
     "Jafari / Shia Ithna-Ashari",
     "University of Islamic Sciences, Karachi",
@@ -29,6 +30,10 @@ def home(request):
     "Morocco",
     "Comunidade Islamica de Lisboa",
     "Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan"
-]
-
-    return render(request, 'index.html')
+    ]
+    
+    context = {
+        'methods' : [(index, method) for index, method in enumerate(prayer_calculation_methods) if method] #creating array of tuples that will contain index and method name, also skipping "None" values
+    }
+    
+    return render(request, 'index.html', context)

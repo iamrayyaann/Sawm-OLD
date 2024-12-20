@@ -2,6 +2,14 @@
 
 {% block body %}
     <form action="/home" method="POST">
-        
+
+        <select class="form-select" name='method'>
+            <option selected>Select calculation method</option>
+            {% for index, method in methods %}
+                {% if method %}
+                    <option value="{{index}}">{{method}}</option>
+                {% endif %}
+            {% endfor %}
+          </select>
     </form>
 {% endblock body %}
