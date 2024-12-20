@@ -3,7 +3,27 @@ from django.shortcuts import render, HttpResponse
 # Create your views here.
 
 def home(request):
-    
+    if request.method == 'POST':
+        selected_country = request.POST.get('country')
+        selected_city = request.POST.get('city')
+        selected_date = request.POST.get('date')
+        selected_method = request.POST.get('method')
+        
+        if selected_method == "not selected":
+            context ={
+                'error_type' : 'Invalid input',
+                'error_message' : 'Select a valid method from the dropdown',
+                
+            }
+            return render(request, 'error.html', context)
+        
+        if not selected_country or not selected_city or not selected_date:
+            context ={
+                'error_type' : 'Invalid input',
+                'error_message' : 'Fill All of the Form Fields',
+            }
+            return render(request, 'error.html', context)
+        
     prayer_calculation_methods = [
     "Jafari / Shia Ithna-Ashari",
     "University of Islamic Sciences, Karachi",

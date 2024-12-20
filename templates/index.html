@@ -1,16 +1,18 @@
 {% extends "base.html" %} {% block body %}
-<div class="container my-4  ">
+<div class="container my-4">
   <div class="row justify-content-center">
     <div class="col-md-6 col-lg-4">
       <div class="form-container">
-        <form action="/home" method="POST" class="form-horizontal">
+        <form action="/" method="POST" class="form-horizontal">
+            {% csrf_token %}    
           <div class="mb-3">
             <label for="countryInput" class="form-label">Country:</label>
             <input
               type="text"
               class="form-control"
               id="countryInput"
-              name="Country"
+              name="country"
+              required
             />
           </div>
           <div class="mb-3">
@@ -19,7 +21,8 @@
               type="text"
               class="form-control"
               id="cityInput"
-              name="City"
+              name="city"
+              required
             />
           </div>
           <div class="mb-3">
@@ -29,18 +32,19 @@
               class="form-control"
               id="dateInput"
               name="date"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="methodSelect" class="form-label"
               >Calculation Method:</label
             >
-            <select class="form-select" id="methodSelect" name="method">
-              <option selected>Select calculation method</option>
+            <select class="form-select" id="methodSelect" name="method" required>
+              <option selected value="not selected">Select calculation method</option>
               {% for index, method in methods %} {% if method %}
               <option value="{{index}}">{{method}}</option>
               {% endif %} {% endfor %}
-            </select>
+            </select>   
           </div>
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Submit</button>
