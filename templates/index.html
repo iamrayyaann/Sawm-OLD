@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <form action="/home" method="POST">
-
+    <form action="/home" method="POST" class="form-horizontal">
+        <div class="form-group">
+            <label for="countryInput" class="control-label ">Country: </label>
+            <input type="text" class="form-control" id="countryInput" name="Country">
+        
+            <label for="cityInput" class="control-label">City: </label>
+            <input type="text" class="form-control" id="cityInput" name="City">
+        </div>
+        <input type="date" name="date" >
+        
         <select class="form-select" name='method'>
             <option selected>Select calculation method</option>
             {% for index, method in methods %}
