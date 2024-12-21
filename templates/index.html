@@ -24,32 +24,27 @@
               placeholder="City"
               required>
           </div>
-          </br>
-
-          <!-- Get Date Input -->
-          <div class="mb-3">
+          
+          
+          <!-- Get Date And Method Input -->
+          <div class="input-group">
             <input
               type="date"
               class="form-control"
               id="dateInput"
               name="date"
               required>
-          </div>
-
-          <!-- Get Method Input -->
-          <div>
             <select class="form-select" id="methodSelect" name="method" required>
-              <option selected value="not selected">Select Calculation Method</option>
+              <option selected value="not selected">Method</option>
                 {% for index, method in methods %} {% if method %}
                 <option value="{{index}}">{{method}}</option>
                 {% endif %} {% endfor %}
             </select>
           </div>
-          </br>
 
           <!-- Search Button -->
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn">Search</button>
           </div>
 
         </form>
