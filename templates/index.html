@@ -35,9 +35,9 @@
               name="date"
               required>
             <select class="form-select" id="methodSelect" name="method" required>
-              <option selected value="not selected">Method</option>
-                {% for index, method in methods %} {% if method %}
-                <option value="{{index}}">{{method}}</option>
+              <option selected value="N/A">Choose Method</option>
+                {% for method in methods %} {% if method %}
+                <option value="{{ method.0 }}">{{ method.1 }}</option>
                 {% endif %} {% endfor %}
             </select>
           </div>

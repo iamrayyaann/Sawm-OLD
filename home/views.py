@@ -1,39 +1,56 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 import requests
 
 # Create your views here.
-
 def home(request):
-    if request.method == 'POST':
-        selected_country = request.POST.get('country')
-        selected_city = request.POST.get('city')
-        selected_date = request.POST.get('date')
-        selected_method = request.POST.get('method')
+    try:
+        response = requests.get('https://api.aladhan.com/v1/methods') # Get the prayer methods
+        response_data = response.json()
         
-        if selected_method == "not selected":
+        methods_list = []
+        
+        if response.status_code == 200 and response_data.get('data'): # If the request is successful
+            methods = response_data['data']
+            for key, value in methods.items():
+                name = value.get('name', None)
+            methods_list = [(index, method_info['name']) for index, method_info in methods.items() if 'name' in method_info]
+        else:
+            methods_list = [] # Empty list if there is an error
+    except Exception as e:
+        print(f"Error finding prayer methods: {e}")
+        methods_list = [] # Empty list if there is an error
+        
+    
+        
+    if request.method == 'POST': # If form is submitted
+        input_country = request.POST.get('country')
+        input_city = request.POST.get('city')
+        input_date = request.POST.get('date')
+        input_method = request.POST.get('method')
+        
+        if input_method == "N/A":
             context ={
                 'error_type' : 'Invalid input',
-                'error_message' : 'Select a valid method from the dropdown',
-                
+                'error_message' : 'Select a method',
             }
             return render(request, 'error.html', context)
         
-        if not selected_country or not selected_city or not selected_date:
-            context ={
+        if not input_country or not input_city or not input_date:
+            context = {
                 'error_type' : 'Invalid input',
-                'error_message' : 'Fill All of the Form Fields',
+                'error_message' : 'Fill all the fields',
             }
             return render(request, 'error.html', context)
         
-        path_parameter = selected_date
+        path_parameter = input_date
         api_base_url = f"https://api.aladhan.com/v1/timingsByCity/{path_parameter}"
         query_parameters ={
-            'country' : selected_country,
-            'city' : selected_city,
-            'method' : selected_method,
+            'country' : input_country,
+            'city' : input_city,
+            'method' : input_method,
         }
         
-        api_response = requests.get(api_base_url, params=query_parameters)
+        api_response = requests.get(api_base_url, params = query_parameters)
         
         if api_response.status_code == 200:
             api_data = api_response.json()
@@ -50,37 +67,8 @@ def home(request):
             }
             return render(request, 'error.html', context)
         
-        
-    prayer_calculation_methods = [
-    "Jafari / Shia Ithna-Ashari",
-    "University of Islamic Sciences, Karachi",
-    "Islamic Society of North America",
-    "Muslim World League",
-    "Umm Al-Qura University, Makkah",
-    "Egyptian General Authority of Survey",
-    None,  # Index 6 is missing
-    "Institute of Geophysics, University of Tehran",
-    "Gulf Region",
-    "Kuwait",
-    "Qatar",
-    None,  # Index 11 is missing
-    "Majlis Ugama Islam Singapura, Singapore",
-    "Union Organization islamic de France",
-    "Diyanet İşleri Başkanlığı, Turkey",
-    "Spiritual Administration of Muslims of Russia",
-    None,
-    "Dubai (experimental)",
-    "Jabatan Kemajuan Islam Malaysia (JAKIM)",
-    "Tunisia",
-    "Algeria",
-    "KEMENAG - Kementerian Agama Republik Indonesia",
-    "Morocco",
-    "Comunidade Islamica de Lisboa",
-    "Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan"
-    ]
-    
     context = {
-        'methods' : [(index, method) for index, method in enumerate(prayer_calculation_methods) if method] #creating array of tuples that will contain index and method name, also skipping "None" values
+        'methods': methods_list # Array of methods
     }
     
     return render(request, 'index.html', context)
