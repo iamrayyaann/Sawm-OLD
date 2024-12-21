@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+import requests
 
 # Create your views here.
 
@@ -23,6 +24,31 @@ def home(request):
                 'error_message' : 'Fill All of the Form Fields',
             }
             return render(request, 'error.html', context)
+        
+        path_parameter = selected_date
+        api_base_url = f"https://api.aladhan.com/v1/timingsByCity/{path_parameter}"
+        query_parameters ={
+            'country' : selected_country,
+            'city' : selected_city,
+            'method' : selected_method,
+        }
+        
+        api_response = requests.get(api_base_url, params=query_parameters)
+        
+        if api_response.status_code == 200:
+            api_data = api_response.json()
+            context = {
+                'response' : api_data
+            }
+            return render(request, 'displayTime.html', context)
+        else:
+            error_message = f"API Error: {api_response.status_code} - {api_response.text}"
+            context = {
+                'error_type': 'API Error',
+                'error_message': error_message,
+            }
+            return render(request, 'error.html', context)
+        
         
     prayer_calculation_methods = [
     "Jafari / Shia Ithna-Ashari",
