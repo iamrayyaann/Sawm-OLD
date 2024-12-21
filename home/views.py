@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 
+# Create your views here.
 def home(request):
     try:
         response = requests.get('https://api.aladhan.com/v1/methods') # Get the prayer methods
@@ -21,7 +22,7 @@ def home(request):
         
     
         
-    if request.method == 'POST':
+    if request.method == 'POST': # If form is submitted
         input_country = request.POST.get('country')
         input_city = request.POST.get('city')
         input_date = request.POST.get('date')
@@ -38,6 +39,31 @@ def home(request):
             context = {
                 'error_type' : 'Invalid input',
                 'error_message' : 'Fill all the fields',
+            }
+            return render(request, 'error.html', context)
+        
+        path_parameter = input_date
+        api_base_url = f"https://api.aladhan.com/v1/timingsByCity/{path_parameter}"
+        query_parameters ={
+            'country' : input_country,
+            'city' : input_city,
+            'method' : input_method,
+        }
+        
+        api_response = requests.get(api_base_url, params = query_parameters)
+        
+        if api_response.status_code == 200:
+            api_data = api_response.json()
+            context = {
+                'suhoor' : api_data['data']['timings']['Fajr'],
+                'iftar' : api_data['data']['timings']['Maghrib']
+            }
+            return render(request, 'displayTime.html', context)
+        else:
+            error_message = f"API Error: {api_response.status_code} - {api_response.text}"
+            context = {
+                'error_type': 'API Error',
+                'error_message': error_message,
             }
             return render(request, 'error.html', context)
         
