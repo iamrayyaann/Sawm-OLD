@@ -55,12 +55,10 @@ def home(request):
         
         if api_response.status_code == 200:
             api_data = api_response.json()
-            Suhoor = datetime.strptime(api_data['data']['timings']['Fajr'], "%H:%M").strftime("%l:%M %p").lower
-            Iftaar = datetime.strptime(api_data['data']['timings']['Maghrib'], "%H:%M").strftime("%l:%M %p").lower
             context = {
-                'suhoor' : Suhoor,
-                'iftar' : Iftaar
-            }
+                'suhoor': datetime.strptime(api_data['data']['timings']['Fajr'], '%H:%M'),
+                'iftar': datetime.strptime(api_data['data']['timings']['Maghrib'], '%H:%M')
+}
             return render(request, 'displayTime.html', context)
         else:
             error_message = f"API Error: {api_response.status_code} - {api_response.text}"

@@ -15,7 +15,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <h2 class='custom-container' style="color:white;">
-                                                {{suhoor}}
+                                                {{suhoor|date:"g:i A"|lower|cut:'.'}}
                                                 <span style="opacity: 0.5; font-size: 0.5em;">&plusmn;</span>
                                             </h2>
                                         </div>
@@ -27,7 +27,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <h2 class='custom-container' style="color:white;">
-                                                {{iftar}}
+                                                {{iftar|date:"g:i A"|lower|cut:'.'}}
                                                 <span style="opacity: 0.5; font-size: 0.5em;">&plusmn;</span></h2>
                                             </h2>
                                         </div>
