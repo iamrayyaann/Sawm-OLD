@@ -55,8 +55,8 @@ def home(request):
         
         if api_response.status_code == 200:
             api_data = api_response.json()
-            Suhoor = datetime.strptime(api_data['data']['timings']['Fajr'], "%H:%M").strftime("%I:%M %p").lower()
-            Iftaar = datetime.strptime(api_data['data']['timings']['Maghrib'], "%H:%M").strftime("%I:%M %p").lower
+            Suhoor = datetime.strptime(api_data['data']['timings']['Fajr'], "%H:%M").strftime("%l:%M %p").lower
+            Iftaar = datetime.strptime(api_data['data']['timings']['Maghrib'], "%H:%M").strftime("%l:%M %p").lower
             context = {
                 'suhoor' : Suhoor,
                 'iftar' : Iftaar
