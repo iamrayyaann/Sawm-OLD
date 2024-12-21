@@ -4,51 +4,49 @@
     <div class="col-md-6 col-lg-4">
       <div class="form-container">
         <form action="/" method="POST" class="form-horizontal">
-            {% csrf_token %}    
-          <div class="mb-3">
-            <label for="countryInput" class="form-label">Country:</label>
+            
+          {% csrf_token %}
+          
+          <!-- Get Country And City-->
+          <div class="input-group">
             <input
               type="text"
               class="form-control"
               id="countryInput"
               name="country"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="cityInput" class="form-label">City:</label>
+              placeholder="Country"
+              required>
             <input
               type="text"
               class="form-control"
               id="cityInput"
               name="city"
-              required
-            />
+              placeholder="City"
+              required>
           </div>
-          <div class="mb-3">
-            <label for="dateInput" class="form-label">Date:</label>
+          
+          
+          <!-- Get Date And Method Input -->
+          <div class="input-group">
             <input
               type="date"
               class="form-control"
               id="dateInput"
               name="date"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="methodSelect" class="form-label"
-              >Calculation Method:</label
-            >
+              required>
             <select class="form-select" id="methodSelect" name="method" required>
-              <option selected value="not selected">Select calculation method</option>
-              {% for index, method in methods %} {% if method %}
-              <option value="{{index}}">{{method}}</option>
-              {% endif %} {% endfor %}
-            </select>   
+              <option selected value="not selected">Method</option>
+                {% for index, method in methods %} {% if method %}
+                <option value="{{index}}">{{method}}</option>
+                {% endif %} {% endfor %}
+            </select>
           </div>
+
+          <!-- Search Button -->
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn">Search</button>
           </div>
+
         </form>
       </div>
     </div>

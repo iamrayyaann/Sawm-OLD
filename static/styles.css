@@ -3,12 +3,33 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #12171c;
+    background-color: #000000;
 }
+
+/* BG Card Styling */
 .form-container {
-    border: 1px solid #000306;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #6e6c6c;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 21px;
+    padding: 35px;
+    background-color: #191919;
+}
+
+/* Button Styling */
+.btn {
+    color: #ffffff;
+    background-color: #ef233c;
+    border-radius: 11px;
+    height: 40px;
+    font-weight: bold;
+}
+.btn:hover {
+    color: #ffffff;
+    background-color: #ef233ccc;
+}
+
+/* Input Fields Styling */
+.input-group {
+    padding-bottom: 30px;
+}
+.input-group input::placeholder{
+    color: #00000060;
 }
