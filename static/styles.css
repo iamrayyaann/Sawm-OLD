@@ -5,6 +5,7 @@
 
 /* Body Styling */
 body {
+    font-family: 'JetBrains Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
