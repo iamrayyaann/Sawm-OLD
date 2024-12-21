@@ -38,7 +38,8 @@ def home(request):
         if api_response.status_code == 200:
             api_data = api_response.json()
             context = {
-                'response' : api_data
+                'suhoor' : api_data['data']['timings']['Fajr'],
+                'iftar' : api_data['data']['timings']['Maghrib']
             }
             return render(request, 'displayTime.html', context)
         else:
