@@ -1,3 +1,9 @@
+/* Global Styling */
+* {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Body Styling */
 body {
     display: flex;
     justify-content: center;
