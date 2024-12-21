@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import datetime
 import requests
 
 # Create your views here.
@@ -54,9 +55,11 @@ def home(request):
         
         if api_response.status_code == 200:
             api_data = api_response.json()
+            Suhoor = datetime.strptime(api_data['data']['timings']['Fajr'], "%H:%M").strftime("%I:%M %p").lower()
+            Iftaar = datetime.strptime(api_data['data']['timings']['Maghrib'], "%H:%M").strftime("%I:%M %p").lower
             context = {
-                'suhoor' : api_data['data']['timings']['Fajr'],
-                'iftar' : api_data['data']['timings']['Maghrib']
+                'suhoor' : Suhoor,
+                'iftar' : Iftaar
             }
             return render(request, 'displayTime.html', context)
         else:
