@@ -14,7 +14,7 @@ def home(request):
             methods = response_data['data']
             for key, value in methods.items():
                 name = value.get('name', None)
-            methods_list = [(index, method_info['name']) for index, method_info in methods.items() if 'name' in method_info]
+            methods_list = [(method_info['id'], method_info['name']) for _, method_info in methods.items() if 'name' in method_info]
         else:
             methods_list = [] # Empty list if there is an error
     except Exception as e:
