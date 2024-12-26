@@ -1,5 +1,5 @@
 # Sawm
-[![Static Badge](https://img.shields.io/badge/Admin-Saad--SYEDK-white)](https://github.com/Saad-SYEDK)  [![Static Badge](https://img.shields.io/badge/Admin-iamrayyaann-white)](https://github.com/iamrayyaann)
+[![Static Badge](https://img.shields.io/badge/License-MIT-blue)](https://github.com/iamrayyaann/Sawm/blob/main/LICENSE) [![Static Badge](https://img.shields.io/badge/Admin-Saad--SYEDK-white)](https://github.com/Saad-SYEDK)  [![Static Badge](https://img.shields.io/badge/Admin-iamrayyaann-white)](https://github.com/iamrayyaann)
 
 Sawm is a lightweight, distraction-free web app that provides Suhoor and Iftaar timings based on the user's input of date, city, country, and calculation method. It uses the Al Adhan API to fetch accurate Suhoor and Iftaar timings.
 
@@ -37,6 +37,3 @@ Sawm is a lightweight, distraction-free web app that provides Suhoor and Iftaar 
 - HTML, CSS, Bootstrap
 - Python
 - Al Adhan API
-
-## License
-This project is licensed under the MIT License.
