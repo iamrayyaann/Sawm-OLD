@@ -1,0 +1,47 @@
+/* Global Styling */
+* {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Body Styling */
+body {
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000000;
+}
+
+/* Background Styling */
+.form-container {
+    border-radius: 21px;
+    padding: 35px;
+    background-color: #191919;
+}
+.custom-container {
+    background-color: #191919;
+    border-radius: 10px;
+    padding: 10px 35px;
+}
+
+/* Button Styling */
+.btn {
+    color: #ffffff;
+    background-color: #ef233c;
+    border-radius: 11px;
+    height: 40px;
+    font-weight: bold;
+}
+.btn:hover {
+    color: #ffffff;
+    background-color: #ef233ccc;
+}
+
+/* Input Fields Styling */
+.input-group {
+    padding-bottom: 30px;
+}
+.input-group input::placeholder{
+    color: #00000060;
+}
