@@ -6,25 +6,38 @@
     <link rel="stylesheet" href="style.css">
     <title>Sawm</title>
 </head>
-<header class="header">
-    <h1>SAWM</h1>
-    <p><i>Fasting Simplified</i></p>
-</header>
 <body>
-    <div class="times-container">
-        <h2>Suhoor</h2>
-        <div class="time-tiles">
-            <p id="suhoor"></p>
+    <!-- Header Section -->
+    <header class="header">
+        <h1>SAWM</h1>
+        <p><i>Fasting Simplified</i></p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="times-container">
+            <div class="time-section">
+                <h2>Suhoor</h2>
+                <div class="time-tiles">
+                    <p id="suhoor">Loading...</p>
+                </div>
+            </div>
+            <div class="time-section">
+                <h2>Iftar</h2>
+                <div class="time-tiles">
+                    <p id="iftar">Loading...</p>
+                </div>
+            </div>
         </div>
-        <h2>Iftar</h2>
-        <div class="time-tiles">
-            <p id="iftar"></p>
-        </div>
-    </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Sawm by 
+            <a href="https://github.com/iamrayyaann" target="_blank">@iamrayyaann</a>
+        </p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-
-<footer class="footer">
-    <p>&copy 2024 Sawm by <a href="https://github.com/iamrayyaann">@iamrayyaann</a></p>
-</footer>
 </html>

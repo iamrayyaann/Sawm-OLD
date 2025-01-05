@@ -1,60 +1,102 @@
+/* Universal Styles */
 * {
     margin: 0;
     padding: 0;
-    font-family: JetBrains, monospace;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
 }
 
+/* Body Styling */
 body {
-    background: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     justify-content: flex-start;
+    text-align: center;
 }
 
+/* Header Styling */
 .header {
     background-color: #141414;
     padding: 20px;
     width: 100%;
-    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 20px;
-    text-align: center;
+.header h1 {
+    font-size: 2rem;
 }
 
+.header p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Main Section Styling */
 .times-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     margin-top: 50px;
+    width: 100%;
+}
+
+.time-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .time-tiles {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: #141414;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
 }
 
 #suhoor, #iftar {
-    background-color: #141414;
-    border-radius: 11px;
-    padding: 20px;
-    color: white;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
 }
 
-a {
-    color: rgb(0, 160, 255);
+/* Footer Styling */
+.footer {
+    background-color: #141414;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.footer a {
+    color: #00a0ff;
     text-decoration: none;
 }
 
-a:hover {
+.footer a:hover {
     font-weight: bold;
+    color: #1ec8ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .time-tiles {
+        width: 150px;
+        padding: 15px;
+    }
+
+    #suhoor, #iftar {
+        font-size: 1rem;
+    }
 }
